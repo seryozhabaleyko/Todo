@@ -7,19 +7,19 @@ export default function Model() {
         add(text) {
             const item = {
                 id: hash.length > 0 ? hash[hash.length - 1].id + 1 : 1, // Date.now()
-                text: text,
-                complete: false
+                title: text,
+                completed: false
             }
 
             hash.push(item);
             setLocalStorage('todos', hash);
         },
         edit(id, text) {
-            hash = hash.map(item => item.id === id ? { id: item.id, text: text, complete: item.complete } : item)
+            hash = hash.map(item => item.id === id ? { id: item.id, title: text, completed: item.completed } : item)
             setLocalStorage('todos', hash);
         },
         toggle(id) {
-            hash = hash.map(item => item.id === id ? { id: item.id, text: item.text, complete: !item.complete } : item)
+            hash = hash.map(item => item.id === id ? { id: item.id, title: item.title, completed: !item.completed } : item)
             setLocalStorage('todos', hash);
         },
         delete(id) {
