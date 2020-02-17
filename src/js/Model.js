@@ -15,8 +15,8 @@ class Model {
     addTodo(todoText) {
         const todo = {
             id: this.todos.length > 0 ? this.todos[this.todos.length - 1].id + 1 : 1,
-            text: todoText,
-            complete: false,
+            title: todoText,
+            completed: false,
         }
 
         this.todos.push(todo)
@@ -26,7 +26,7 @@ class Model {
 
     editTodo(id, updatedText) {
         this.todos = this.todos.map(todo =>
-            todo.id === id ? { id: todo.id, text: updatedText, complete: todo.complete } : todo
+            todo.id === id ? { id: todo.id, title: updatedText, completed: todo.completed } : todo
         )
 
         this._commit(this.todos)
@@ -40,7 +40,7 @@ class Model {
 
     toggleTodo(id) {
         this.todos = this.todos.map(todo =>
-            todo.id === id ? { id: todo.id, text: todo.text, complete: !todo.complete } : todo
+            todo.id === id ? { id: todo.id, title: todo.title, completed: !todo.completed } : todo
         )
 
         this._commit(this.todos)
