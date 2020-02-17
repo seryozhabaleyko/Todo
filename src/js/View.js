@@ -42,12 +42,10 @@ class View {
     }
 
     displayTodos(todos) {
-        // Удалить все узлы
         while (this.todoList.firstChild) {
             this.todoList.removeChild(this.todoList.firstChild)
         }
 
-        // Показать сообщение по умолчанию
         if (todos.length === 0) {
             const p = this.createElement('p')
             p.textContent = 'Нечего делать! Добавить задачу?'
@@ -59,18 +57,18 @@ class View {
 
                 const checkbox = this.createElement('input')
                 checkbox.type = 'checkbox'
-                checkbox.checked = todo.complete
+                checkbox.checked = todo.completed
 
                 const span = this.createElement('span', 'todo-item-text')
                 span.contentEditable = true
                 span.classList.add('editable')
 
-                if (todo.complete) {
+                if (todo.completed) {
                     const strike = this.createElement('s')
-                    strike.textContent = todo.text
+                    strike.textContent = todo.title
                     span.append(strike)
                 } else {
-                    span.textContent = todo.text
+                    span.textContent = todo.title
                 }
 
                 const deleteButton = this.createElement('button', 'delete')
